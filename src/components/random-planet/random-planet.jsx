@@ -1,23 +1,27 @@
 import React from "react";
-import './person-details.css'
-const PersonDetails = () => {
+import './random-planet.css'
+const RandomPlanet = () => {
 	return (
         <div className="info">
             <div className="container">
                 <div className="info__inner d-flex">
                     <img
-                        src="https://starwars-visualguide.com/assets/img/characters/1.jpg"
+                        src="https://starwars-visualguide.com/assets/img/planets/9.jpg"
                         alt=""
                         className="info__img"
                     />
                     <div className="info__descr">
-                        <span className="info__name">Luke</span>
+                        <span className="info__name">Planet Name</span>
                         <ul className="info__list">
                             <li className="info__list-item">
-                                Gender male
+                                Population 12141124
                             </li>
-                            <li className="info__list-item">Birth Year 45</li>
-                            <li className="info__list-item">Eye Color red</li>
+                            <li className="info__list-item">
+                                Rotation Period
+                            </li>
+                            <li className="info__list-item">
+                                Diameter 1000
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -26,4 +30,4 @@ const PersonDetails = () => {
     );
 };
 
-export default PersonDetails
+export default RandomPlanet
