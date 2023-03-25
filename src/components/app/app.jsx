@@ -9,13 +9,13 @@ export default class App extends Component {
 
     render(){
         return (
-            <div>
+            <div className="container">
                 <Header />
                 <RandomPlanet />
-                <div>
+                <div className="d-flex">
                     <ItemList />
+                    <PersonDetails />
                 </div>
-                <PersonDetails/>
             </div>
         );
     }

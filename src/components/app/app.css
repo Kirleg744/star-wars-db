@@ -1,5 +1,5 @@
 .container{
-    width: 800px;
+    width: 1200px;
 }
 
 body{
@@ -20,7 +20,7 @@ ul{
 }
 
 .info__inner{
-    background-color: rgb(72, 57, 57);
+    background-color: rgba(0, 0, 0, 0.266);
     padding: 15px;
 }
 
