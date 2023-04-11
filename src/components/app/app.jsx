@@ -1,23 +1,25 @@
-import React, { Component } from "react";
-import './app.css'
+import React, { Component, useState } from "react";
+import "./app.css";
 import Header from "../header/header";
 import RandomPlanet from "../random-planet/random-planet";
-import ItemList from "../item-list/item-list";
-import PersonDetails from "../person-details/person-details";
+import "../../fonts/stylesheet.css";
+import SwapiService from "../../services/swapi-service";
+import { SwapiServiceProvider } from "../swapi-service-context";
+import { PeoplePage, PlanetPage, StarshipPage } from "../pages";
 
-export default class App extends Component {
+const App = () => {
+    const swapiService = new SwapiService();
 
-    render(){
-        return (
-            <div className="container">
-                <Header />
+    const [page, setPage] = useState(<PeoplePage />);
+    return (
+        <div className="container">
+            <SwapiServiceProvider value={swapiService}>
+                <Header setPage = {setPage}/>
                 <RandomPlanet />
-                <div className="d-flex">
-                    <ItemList />
-                    <PersonDetails />
-                </div>
-            </div>
-        );
-    }
+                {page}
+            </SwapiServiceProvider>
+        </div>
+    );
+};
 
-}
+export default App;

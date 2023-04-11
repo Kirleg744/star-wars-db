@@ -1,3 +1,4 @@
+
 .container{
     width: 1200px;
 }
@@ -10,20 +11,29 @@ ul{
     list-style: none;
 }
 
-.info{
-    margin-top: 30px;
-}
 
 .info__img{
-    width: 200px;
+    /* width: 250px; */
+    width: 230px;
+    object-fit: cover;
     margin-right: 15px;
 }
 
-.info__inner{
+.info{
     background-color: rgba(0, 0, 0, 0.266);
     padding: 15px;
+    padding-bottom: 30px;
+    height: max-content;
+    
 }
 
 .info__list{
     margin-top: 20px;
+    padding-left: 20px;
+}
+li{
+    cursor: pointer;
+}
+.info__list-item{
+    border-bottom: 2px solid #ffffff;
 }

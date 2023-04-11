@@ -2,25 +2,35 @@ import React, { Component } from "react";
 import "./random-planet.css";
 import SwapiService from "../../services/swapi-service";
 import Spinner from "../spinner/spinner";
+import ErrorIcon from "./free-icon-error-404-on-screen-78924.png";
 export default class RandomPlanet extends Component {
     swapiService = new SwapiService();
 
     state = {
         planet: {},
-        loading: true
+        loading: true,
+        error: false
     };
 
-    constructor() {
-        super();
+
+    componentDidMount(){
         this.updatePlanet();
+        setInterval(this.updatePlanet, 2000);
     }
 
-    updatePlanet() {
+    updatePlanet = () => {
         const id = this.getRndInteger(2, 19)
-        console.log(id);
         this.swapiService
         .getPlanet(id)
-        .then(this.onPlanetLoaded);
+        .then(this.onPlanetLoaded)
+        .catch(this.onError)
+    }
+
+    onError = (err) => {
+        this.setState({
+            error: true,
+            loading: false,
+        })
     }
 
     getRndInteger = (min, max) => {
@@ -32,13 +42,15 @@ export default class RandomPlanet extends Component {
     };
 
     render() {
-        const {planet, loading} = this.state;
-
+        const {planet, loading, error} = this.state;
+        const hasData = !(loading || error)
+        const errorMessage = error ? <img className="error-icon" src={ErrorIcon} alt="" /> : null
         const spinner = loading ? <Spinner/> : null;
-        const content = !loading ? <PlanetView planet={planet} /> : null;
+        const content = hasData ? <PlanetView planet={planet} /> : null;
 
         return (
-            <div className="info">
+            <div className="info d-flex">
+                {errorMessage}
                 {spinner}
                 {content}
             </div>
@@ -51,24 +63,20 @@ const PlanetView = ({planet}) => {
     const {id, name, population, rotationPeriod, diameter} = planet;
     return (
         <React.Fragment>
-            <div className="info__inner d-flex">
-                <img
-                    src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
-                    alt=""
-                    className="info__img"
-                />
-                <div className="info__descr">
-                    <span className="info__name">{name}</span>
-                    <ul className="info__list">
-                        <li className="info__list-item">
-                            Population {population}
-                        </li>
-                        <li className="info__list-item">
-                            Rotation {rotationPeriod}
-                        </li>
-                        <li className="info__list-item">Diameter {diameter}</li>
-                    </ul>
-                </div>
+            <img
+                src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
+                alt=""
+                className="info__img"
+            />
+            <div className="info__descr">
+                <span className="info__name">{name}</span>
+                <ul className="info__list">
+                    <li className="info__list-item">Population {population}</li>
+                    <li className="info__list-item">
+                        Rotation {rotationPeriod}
+                    </li>
+                    <li className="info__list-item">Diameter {diameter}</li>
+                </ul>
             </div>
         </React.Fragment>
     );
