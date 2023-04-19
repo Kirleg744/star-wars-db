@@ -1,48 +1,30 @@
 import React from "react";
 import "./header.css";
 import { PeoplePage, PlanetPage, StarshipPage } from "../pages";
+import { Link } from "react-router-dom";
 
-const Header = ({setPage}) => {
+const Header = ({}) => {
     return (
         <header className="header">
             <div className="header__inner d-flex">
-                <span className="header__logo">Star DB</span>
+                <span className="header__logo">
+                    <Link to="/star-wars-db">Star DB</Link>
+                </span>
                 <nav className="header__nav nav d-flex">
                     <li className="header__nav-item nav-item">
-                        <a
-                            onClick={(e) => {
-                                e.preventDefault();
-                                setPage(<PeoplePage />);
-                            }}
-                            className="nav-link"
-                            href=""
-                        >
-                            People
-                        </a>
+                        <Link to="/people/">People</Link>
                     </li>
                     <li className="header__nav-item nav-item">
-                        <a
-                            onClick={(e) => {
-                                e.preventDefault();
-                                setPage(<PlanetPage />);
-                            }}
-                            className="nav-link"
-                            href=""
-                        >
-                            Planets
-                        </a>
+                        <Link to="/planets/">Planets</Link>
                     </li>
                     <li className="header__nav-item nav-item">
-                        <a
-                            onClick={(e) => {
-                                e.preventDefault();
-                                setPage(<StarshipPage />);
-                            }}
-                            className="nav-link"
-                            href=""
-                        >
-                            Starships
-                        </a>
+                        <Link to="/starships/">Starships</Link>
+                    </li>
+                    <li className="header__nav-item nav-item">
+                        <Link to="/login">Login</Link>
+                    </li>
+                    <li className="header__nav-item nav-item">
+                        <Link to="/secret">Secret</Link>
                     </li>
                 </nav>
             </div>

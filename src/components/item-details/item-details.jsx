@@ -24,7 +24,7 @@ export default class ItemDetails extends Component {
         item: {},
         loading: true,
         chosen: false,
-        imageUrl: null
+        imageUrl: null,
     };
 
     componentDidMount() {
@@ -34,26 +34,32 @@ export default class ItemDetails extends Component {
     updateItem() {
         const { itemId, getData, getImageUrl } = this.props;
         if (itemId === null) {
-            return
+            return;
         }
         getData(itemId).then((item) => {
-            this.setState({ item, loading: false, chosen: true, imageUrl: getImageUrl(item) });
+            this.setState({
+                item,
+                chosen: true,
+                loading: false,
+                imageUrl: getImageUrl(item),
+            });
         });
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.itemId !== prevProps.itemId) {
-            this.setState({ loading: true })
+            this.setState({ loading: true });
             this.updateItem();
         }
     }
     render() {
         const { name, id } = this.state.item;
-        const {imageUrl, item} = this.state
+        const { imageUrl, item } = this.state;
 
-        if (this.state.loading  && this.state.chosen){
-            return <Spinner/>
+        if (this.state.loading && this.state.chosen) {
+            return <Spinner />;
         }
+
         if (!this.state.chosen) {
             return (
                 <div className="align-items-center justify-content-center d-flex ">
@@ -63,25 +69,19 @@ export default class ItemDetails extends Component {
         }
 
         return (
-                <div className="d-flex">
-                    <img
-                        src={imageUrl}
-                        alt=""
-                        className="info__img item__img"
-                    />
-                    <div className="info__descr">
-                        <span className="info__name">
-                            {name} {id}
-                        </span>
-                        <ul className="info__list">
-                            {
-                                React.Children.map(this.props.children, (child) => {
-                                    return React.cloneElement(child, {item})  
-                                })
-                            }
-                        </ul>
-                    </div>
+            <div className="info d-flex">
+                <img src={imageUrl} alt="" className="info__img item__img" />
+                <div className="info__descr">
+                    <span className="info__name">
+                        {name} {id}
+                    </span>
+                    <ul className="info__list">
+                        {React.Children.map(this.props.children, (child) => {
+                            return React.cloneElement(child, { item });
+                        })}
+                    </ul>
                 </div>
+            </div>
         );
     }
 }

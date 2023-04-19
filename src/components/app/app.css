@@ -37,3 +37,15 @@ li{
 .info__list-item{
     border-bottom: 2px solid #ffffff;
 }
+
+h1{
+    margin: 50px;
+}
+
+h2{
+    margin: 20px 0;
+}
+
+h1, h2, h3{
+    text-align: center;
+}

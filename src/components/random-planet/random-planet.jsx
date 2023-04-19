@@ -49,7 +49,7 @@ export default class RandomPlanet extends Component {
         const content = hasData ? <PlanetView planet={planet} /> : null;
 
         return (
-            <div className="info d-flex">
+            <div className="random-planet info d-flex">
                 {errorMessage}
                 {spinner}
                 {content}

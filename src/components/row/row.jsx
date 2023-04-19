@@ -4,7 +4,7 @@ const Row = ({ left, right }) => {
     return (
         <div className="d-flex mt-3">
             <div className="item-list">{left}</div>
-            <div className="info item-details">{right}</div>
+            <div className="item-details">{right}</div>
         </div>
     );
 };
