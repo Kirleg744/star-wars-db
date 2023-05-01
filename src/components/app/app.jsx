@@ -29,30 +29,13 @@ const App = () => {
                         render={() => (
                             <div className="info mt-4">
                                 <h1>Welcome to the Star Wars DB</h1>
-                                <h3>Choose items above</h3>
+                                <h3 className="mb-5">Choose items above</h3>
                             </div>
                         )}
                     />
                     <Route path="/people/:id?" component={PeoplePage} />
-                    <Route path="/planets" component={PlanetPage} />
-                    <Route path="/starships" exact component={StarshipPage} />
-                    <Route
-                        path="/starships/:id"
-                        render={({ match }) => {
-                            const { id } = match.params;
-                            return <StarshipDetails itemId={id} />;
-                        }}
-                    />
-                    <Route
-                        path="/login"
-                        render={() => (
-                            <LoginPage isLoggedIn={false} onLogin={() => {}} />
-                        )}
-                    />
-                    <Route
-                        path="/secret"
-                        render={() => <SecretPage isLoggedIn={false} />}
-                    />
+                    <Route path="/planets/:id?" component={PlanetPage} />
+                    <Route path="/starships/:id?" component={StarshipPage} />
                 </BrowserRouter>
             </SwapiServiceProvider>
         </div>

@@ -65,17 +65,17 @@ const PlanetView = ({planet}) => {
         <React.Fragment>
             <img
                 src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
-                alt=""
+                alt="ОШИБКА СЕРВЕРА"
                 className="info__img"
             />
             <div className="info__descr">
                 <span className="info__name">{name}</span>
                 <ul className="info__list">
-                    <li className="info__list-item">Population {population}</li>
+                    <li className="info__list-item">Population: {population}</li>
                     <li className="info__list-item">
-                        Rotation {rotationPeriod}
+                        Rotation: {rotationPeriod}
                     </li>
-                    <li className="info__list-item">Diameter {diameter}</li>
+                    <li className="info__list-item">Diameter: {diameter}</li>
                 </ul>
             </div>
         </React.Fragment>

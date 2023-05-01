@@ -5,7 +5,11 @@
 
 body{
     font-size: 20px;
+    font-family:"STARWARS";
+    overflow: hidden
+    
 }
+
 
 ul{
     list-style: none;
@@ -21,9 +25,9 @@ ul{
 
 .info{
     background-color: rgba(0, 0, 0, 0.266);
-    padding: 15px;
-    padding-bottom: 30px;
+    padding: 20px;
     height: max-content;
+    border-radius: 30px;
     
 }
 
@@ -36,6 +40,7 @@ li{
 }
 .info__list-item{
     border-bottom: 2px solid #ffffff;
+    margin-bottom: 5px;
 }
 
 h1{
@@ -48,4 +53,9 @@ h2{
 
 h1, h2, h3{
     text-align: center;
+}
+
+
+.info__name{
+    font-size: 24px;
 }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SwapiService from "../../services/swapi-service";
 import Spinner from "../spinner/spinner";
 import "./item-details.css";
+import error500 from './error500.jpg'
 
 
 const Record = ({item, field, label}) => {
@@ -62,7 +63,7 @@ export default class ItemDetails extends Component {
 
         if (!this.state.chosen) {
             return (
-                <div className="align-items-center justify-content-center d-flex ">
+                <div className="align-items-center justify-content-center d-flex info">
                     <span>Выберите персонажа</span>
                 </div>
             );
@@ -70,7 +71,11 @@ export default class ItemDetails extends Component {
 
         return (
             <div className="info d-flex">
-                <img src={imageUrl} alt="" className="info__img item__img" />
+                <img
+                    src={imageUrl}
+                    alt='ОШИБКА СЕРВЕРА'
+                    className="info__img item__img"
+                />
                 <div className="info__descr">
                     <span className="info__name">
                         {name} {id}

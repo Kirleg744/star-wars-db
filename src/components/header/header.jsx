@@ -20,12 +20,6 @@ const Header = ({}) => {
                     <li className="header__nav-item nav-item">
                         <Link to="/starships/">Starships</Link>
                     </li>
-                    <li className="header__nav-item nav-item">
-                        <Link to="/login">Login</Link>
-                    </li>
-                    <li className="header__nav-item nav-item">
-                        <Link to="/secret">Secret</Link>
-                    </li>
                 </nav>
             </div>
         </header>
